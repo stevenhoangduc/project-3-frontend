@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 export default function CarList(props){
 
-    const carLis = props.pets.map((car) => {
+    const carLis = props.cars.map((car) => {
         return (
         <li key={car._id} >
             <Link to={`/cars/${car._id}`}>{car.brand}</Link>

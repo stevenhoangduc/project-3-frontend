@@ -11,11 +11,14 @@ import CarForm from './components/CarForm/CarForm';
 import CarList from './components/CarList/CarList';
 import CarPost from './components/CarPost/CarPost';
 import Header from './components/Header/Header';
-import * as userService from './services/userService'
-// import * as authService from './services/userService'
+import * as carService from './services/carService'
+
+import { UserContext } from './contexts/UserContext';
 
 function App() {
   const [cars, setCars] = useState([])
+
+  const { user } = useContext(UserContext)
 
   // navigate is a function that we can pass
   // a route path to
@@ -52,7 +55,7 @@ function App() {
     try {
       const newCar = await carService.create(dataFromTheForm)
       console.log(newCar, ' <- this is our newCar')
-      setCars([...Cars, newCar])
+      setCars([...cars, newCar])
     } catch (err) {
       console.log(err)
     }
@@ -84,9 +87,11 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
+      <NavBar />
       <Routes>
-        <Route path='/' element={<CarList  cars={cars} />} />
+        <Route path='/' element={user ? <Dashboard /> : <Landing /> } />
+        <Route path='/sign-up' element={<SignUpForm />} />
+        <Route path='/sign-in' element={<SignInForm />} />
         <Route path='/cars/:carId' element={<CarPost deleteCar={deleteCar} cars={cars}/>} />
         <Route path='/cars/new' element={<CarForm createCar={createCar} />} />
         <Route path="*" element={<h1>Nothing Here!</h1>} />
@@ -98,6 +103,7 @@ function App() {
 export default App
 
 
+{/* <Route path='/' element={<CarList  cars={cars} />} /> */}
 
 
 // import { UserContext } from './contexts/UserContext';

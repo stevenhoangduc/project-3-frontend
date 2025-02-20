@@ -4,6 +4,8 @@ import { useEffect, useContext } from 'react';
 
 import { UserContext } from '../../contexts/UserContext';
 
+import { Link } from "react-router";
+
 import * as userService from '../../services/userService';
 
 import './Dashboard.css'; // Import the CSS file 
@@ -36,6 +38,7 @@ const Dashboard = () => {
       <h1>Welcome, {user.username}</h1>
       <p>
         This is the dashboard page where you can see a list of all the cars.
+        <li><Link to='/cars/new'>Create Car</Link></li>
       </p>
     </main>
   );
