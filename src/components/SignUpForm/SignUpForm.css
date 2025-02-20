@@ -56,11 +56,14 @@
 
 button {
     flex: 1;
-    padding: 10px;
+    padding: 5px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
-    background: rgb(166, 170, 174)
+    background-color: #d0c7c7;
+    display: inline-block;
+    color: red;
+    
   
 }
 
@@ -74,11 +77,13 @@ button:disabled {
 .sign-up-btn {
     background: red;
     transform: scale(1.05);
+    
    
 }
 
 .sign-up-btn:hover {
     background: blue;
+    
    
 }
 
@@ -86,9 +91,12 @@ button:disabled {
 .cancel-btn {
     background: #e60000;
     transform: scale(1.05);
+  
+    
     
 }
 
 .cancel-btn:hover {
     color: green;
+    
 }
