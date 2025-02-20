@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
 
 import { signUp } from '../../services/authService';
+import './SignUpForm.css'; // Import the CSS file
 
 const SignUpForm = () => {
     // navigate is a function that takes in a path 
