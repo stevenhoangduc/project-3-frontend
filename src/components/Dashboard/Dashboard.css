@@ -1,22 +1,52 @@
-
-.main {
-    border: 3px green;
+/* Centering the Dashboard */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background-color: rgb(166, 170, 174);
     text-align: center;
 }
 
-/* Title */
+/* Welcome Heading */
 h1 {
-    color: white;
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-}
-.welcome-message {
-    color: white;
-    font-weight: bold;
+    font-size: 48px;
+    color: white; /* Red */
+    margin-bottom: 15px;
 }
 
+/* Paragraph Styling */
 p {
-    color: white;
-    text-align: center;
+    font-size: 18px;
+    color: #333;
+    max-width: 600px;
+    line-height: 1.5;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* List Styling */
+li {
+    list-style: none;
+    margin-top: 10px;
+}
+
+/* Create Car Link */
+li a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: white;
+    color: red;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    box-shadow: 2px 4px 6px;
+}
+
+li a:hover {
+    background-color: rgb(166, 170, 174);
 }

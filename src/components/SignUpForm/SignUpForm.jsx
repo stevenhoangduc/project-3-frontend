@@ -1,23 +1,11 @@
-// SignUpForm.jsx
-
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
-
-// The context is how you can access the global
-// state 
 import { UserContext } from '../../contexts/UserContext';
-
 import { signUp } from '../../services/authService';
-import './SignUpForm.css'; // Import the CSS file
+import './SignUpForm.css';
 
 const SignUpForm = () => {
-    // navigate is a function that takes in a path 
-    // we defined on one of our routes
-
-    // consume the context! 
-    // here we can destructure setUser, or user state
-    const {setUser} = useContext(UserContext)
-
+    const { setUser } = useContext(UserContext);
     const navigate = useNavigate();
     const [message, setMessage] = useState('');
     const [formData, setFormData] = useState({
@@ -26,31 +14,28 @@ const SignUpForm = () => {
         passwordConf: '',
     });
 
+    const [showPassword, setShowPassword] = useState(false);
+
     const { username, password, passwordConf } = formData;
 
     const handleChange = (evt) => {
         setMessage('');
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
-
     };
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
 
         try {
-            // signUp is from our authService
-            const newUser = await signUp(formData)
-            // updating the UserContext user state!
-            setUser(newUser)
-            console.log(newUser, " <- new User (decoded jwt token)")
+            const newUser = await signUp(formData);
+            setUser(newUser);
+            console.log(newUser, " <- new User (decoded jwt token)");
         } catch (err) {
-            console.log(err)
-            // update the state to whatever the error message is 
-            // to display to the user
-            setMessage(err.message)
+            console.log(err);
+            setMessage(err.message);
         }
 
-        console.log(formData); // this line will print the form data to the console
+        console.log(formData);
     };
 
     const isFormInvalid = () => {
@@ -63,41 +48,54 @@ const SignUpForm = () => {
             <p>{message}</p>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor='username'>Username:</label>
+                    <label htmlFor="username">Username:</label>
                     <input
-                        type='text'
-                        id='name'
+                        type="text"
+                        id="username"
                         value={username}
-                        name='username'
+                        name="username"
                         onChange={handleChange}
                         required
                     />
                 </div>
+
                 <div>
-                    <label htmlFor='password'>Password:</label>
+                    <label htmlFor="password">Password:</label>
                     <input
-                        type='password'
-                        id='password'
+                        type={showPassword ? 'text' : 'password'}
+                        id="password"
                         value={password}
-                        name='password'
+                        name="password"
                         onChange={handleChange}
                         required
                     />
                 </div>
+
                 <div>
-                    <label htmlFor='confirm'>Confirm Password:</label>
+                    <label htmlFor="passwordConf">Confirm Password:</label>
                     <input
-                        type='password'
-                        id='confirm'
+                        type={showPassword ? 'text' : 'password'}
+                        id="passwordConf"
                         value={passwordConf}
-                        name='passwordConf'
+                        name="passwordConf"
                         onChange={handleChange}
                         required
                     />
                 </div>
+
+                <div>
+                    <input
+                        type="checkbox"
+                        id="showPassword"
+                        checked={showPassword}
+                        onChange={() => setShowPassword(!showPassword)}
+                    />
+                    <label htmlFor="showPassword">Show Password</label>
+                </div>
+
                 <div>
                     <button disabled={isFormInvalid()}>Sign Up</button>
-                    <button onClick={() => navigate('/')}>Cancel</button>
+                    <button type="button" onClick={() => navigate('/')}>Cancel</button>
                 </div>
             </form>
         </main>

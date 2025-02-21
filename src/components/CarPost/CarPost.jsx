@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from "react-router"
 import { Navigate } from "react-router"
+import './CarPost.css';
+
 
 
 export default function CarDetail(props){
@@ -20,11 +22,19 @@ export default function CarDetail(props){
     return (
         <section>
             <h2>{selectedCar.name}</h2>
+
             <span>Brand: {selectedCar.brand}</span>
+
             <br />
+
             <span>Model: {selectedCar.model}</span>
+
             <br />
-            <pan>Year: {selectedCar.year}</pan>
+
+            <span>Year: {selectedCar.year}</span>
+
+            <br />
+
             <button onClick={handleDelete}>Delete</button>
             <br />
         </section>

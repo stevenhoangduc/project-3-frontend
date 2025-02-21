@@ -1,0 +1,42 @@
+
+
+
+
+/* Car Info Styling */
+span {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+span {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+span {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Delete Button */
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background: rgb(203, 32, 52);
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: rgb(170, 20, 40);
+}
