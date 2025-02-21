@@ -1,0 +1,32 @@
+/* Centering the Landing Page */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background: rgb(166, 170, 174);
+    text-align: center;
+    padding: 20px;
+}
+
+/* Heading (H1) */
+h1 {
+    font-size: 38px;
+    color: rgb(203, 32, 52);
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Paragraph */
+p {
+    font-size: 18px;
+    color: red;
+    box-shadow: 2px 4px 6px;
+    max-width: 500px;
+    line-height: 1.5;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 28px;
+}

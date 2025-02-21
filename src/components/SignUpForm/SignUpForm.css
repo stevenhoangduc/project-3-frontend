@@ -7,8 +7,8 @@
     justify-content: center;
     height: 100vh;
     background-color: #f4f4f4;
+    
 }
-
 /* Form container */
 .form-container {
     background: white;
@@ -16,38 +16,55 @@
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 350px;
+    
 }
-
-
-
 /* Error message */
 .error-message {
     color: red;
     text-align: center;
     margin-bottom: 0.5rem;
 }
-
-/* Input fields */
-.input-group {
-    margin-bottom: 1rem;
-    
+input[type="text"],
+input [type="password"]  {
+  width: 15%;
+  padding: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 2px 4px 6px;
+  margin: 10px 0;
+  font-size: 16px;
+  padding: 5px;
+  color: red;
+  
 }
 
-.input-group label {
-    display: block;
-    font-weight: 600;
+button:not(:disabled) {
+    background: white;
+    color: rgb(203, 32, 52);
+    font-weight: bold;
+    padding: 8px;
+    box-shadow: 2px 4px 6px;
+    margin: 10px 5px ;
+}
+
+button[type="button"]:hover {
+    background: #bbb;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
     margin-bottom: 5px;
+    display: block;
 }
 
-.input-group input {
-    
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+/* Checkbox */
+input[type="checkbox"] {
+    margin-right: 10px;
+  }
 
-/* Button styles */
+  /* Button styles */
 .button-group {
     display: flex;
     gap: 10px;
@@ -63,6 +80,8 @@ button {
     background-color: #d0c7c7;
     display: inline-block;
     color: red;
+     box-shadow: 2px 4px 6px;
+    color: red;
     
   
 }
@@ -76,27 +95,20 @@ button:disabled {
 /* Sign Up button */
 .sign-up-btn {
     background: red;
-    transform: scale(1.05);
-    
    
+    box-shadow: 4px 6px 8px;
 }
 
 .sign-up-btn:hover {
-    background: blue;
+    background: white;
     
-   
 }
 
 /* Cancel button */
 .cancel-btn {
     background: #e60000;
     transform: scale(1.05);
+    
   
-    
-    
 }
 
-.cancel-btn:hover {
-    color: green;
-    
-}

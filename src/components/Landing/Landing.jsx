@@ -1,4 +1,6 @@
 // src/components/Landing.jsx
+import './Landing.css';
+
 
 const Landing = () => {
     return (
