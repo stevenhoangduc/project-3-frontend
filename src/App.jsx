@@ -11,7 +11,7 @@ import CarForm from './components/CarForm/CarForm';
 import CarList from './components/CarList/CarList';
 import CarPost from './components/CarPost/CarPost';
 import Header from './components/Header/Header';
-import * as carService from './services/carService'
+import * as carService from './services/postsService'
 
 import { UserContext } from './contexts/UserContext';
 
