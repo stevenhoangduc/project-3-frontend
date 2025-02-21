@@ -1,16 +1,124 @@
-
-
-
-div{
-    color: white;
-    
+/* Centering the Main Container */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f4f4f4;
+    text-align: center;
 }
-/* Sign In button */
-.signin-button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 15px;
+
+/* Form Container */
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.15);
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Heading */
+h1 {
+    font-size: 28px;
+    color: rgb(203, 32, 52);
+    margin-bottom: 15px;
+}
+
+/* Error Message */
+p {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Input Field Container */
+div {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+    box-shadow: 2px 4px 6px;
+    color: red;
+   
    
 }
 
+/* Input Focus Effect */
+input:focus {
+    border: 1px solid rgb(203, 32, 52);
+    outline: none;
+    box-shadow: 0 0 5px rgba(203, 32, 52, 0.5);
+}
 
+/* Show Password Checkbox */
+#showPassword {
+    margin-right: 10px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* Show Password Label */
+label[for="showPassword"] {
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+    
+}
+
+/* Sign In Button */
+button[type="submit"] {
+    background: rgb(203, 32, 52);
+    color: white;
+    box-shadow: 2px 4px 6px;
+}
+
+button[type="submit"]:hover {
+    background: rgb(170, 20, 40);
+}
+
+/* Cancel Button */
+button[type="button"] {
+    background: #ccc;
+    margin-top: 10px;
+    
+}
+
+button[type="button"]:hover {
+    background: white;
+}

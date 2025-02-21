@@ -37,8 +37,10 @@ export default function CarForm(props) {
         <form className='car-form' onSubmit={handleSubmit}>
             <label htmlFor="brand">Brand:</label>
             <input type="text" name='brand' id='brand' value={formData.brand} onChange={handleChange} />
+
             <label htmlFor="year">Year:</label>
-            <input type="number" name='year' id='year' value={formData.year} onChange={handleChange} />
+            <input type="text" name='year' id='year' value={formData.year} onChange={handleChange} />
+
             <label htmlFor="model">Model:</label>
             <input type="text" name='model' id='model' value={formData.model} onChange={handleChange} />
             <button type='submit'>Create Car</button>
