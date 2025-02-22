@@ -89,7 +89,7 @@ function App() {
     <div className='App'>
       <NavBar />
       <Routes>
-        <Route path='/' element={user ? <Dashboard /> : <Landing /> } />
+        <Route path='/' element={user ? <Dashboard cars={cars}/> : <Landing /> } />
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/sign-in' element={<SignInForm />} />
         <Route path='/cars/:carId' element={<CarPost deleteCar={deleteCar} cars={cars}/>} />
