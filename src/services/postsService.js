@@ -3,7 +3,9 @@
 const BASE_URL =  `${import.meta.env.VITE_BACK_END_SERVER_URL}/posts`
 
 
+
 async function create(formData){
+    console.log(formData)
 
     try {
         const response = await fetch(BASE_URL, {
@@ -12,6 +14,7 @@ async function create(formData){
             // specify headers to tell the express server
             // we are sending json
             headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
                 'Content-Type': 'application/json'
             },
             // body is the data we are sending to the server

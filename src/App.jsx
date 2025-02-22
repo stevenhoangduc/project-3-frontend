@@ -10,13 +10,13 @@ import Landing from './components/Landing/Landing';
 import CarForm from './components/CarForm/CarForm';
 import CarList from './components/CarList/CarList';
 import CarPost from './components/CarPost/CarPost';
-import Header from './components/Header/Header';
-import * as carService from './services/postsService'
+import * as postService from './services/postsService'
 
 import { UserContext } from './contexts/UserContext';
 
 function App() {
   const [cars, setCars] = useState([])
+  
 
   const { user } = useContext(UserContext)
 
@@ -29,7 +29,7 @@ function App() {
     async function fetchCars() {
       try {
 
-        const data = await carService.index()
+        const data = await postService.index()
         // check your work before you do anything else!
         console.log(data, ' <- data')
         // every time you update state, go to your 
@@ -53,7 +53,7 @@ function App() {
     // pass this function to the form component
     // and call it when the user submits the form
     try {
-      const newCar = await carService.create(dataFromTheForm)
+      const newCar = await postService.create(dataFromTheForm)
       console.log(newCar, ' <- this is our newCar')
       setCars([...cars, newCar])
     } catch (err) {
@@ -63,7 +63,7 @@ function App() {
 
   async function deleteCar(carIdFromCarDetails) {
     try {
-      const response = await carService.deleteCar(carIdFromCarDetails)
+      const response = await postService.deleteCar(carIdFromCarDetails)
 
       // one way to handle an error from the response
       if (response.err) {
@@ -101,27 +101,3 @@ function App() {
 }
 
 export default App
-
-
-{/* <Route path='/' element={<CarList  cars={cars} />} /> */}
-
-
-// import { UserContext } from './contexts/UserContext';
-// const App = () => {
- 
-//   const { user } = useContext(UserContext)
-
-//   return (
-//     <>
-//       <NavBar />
-//       <Routes>
-//         <Route path='/' element={user ? <Dashboard /> : <Landing /> } />
-//         <Route path='/sign-up' element={<SignUpForm />} />
-//         <Route path='/sign-in' element={<SignInForm />} />
-//       </Routes> 
-//     </>
-//   );
-// };
-
-// export default App;
-
