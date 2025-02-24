@@ -22,12 +22,13 @@ export default function CarDetail(props) {
     setEditing(true);
   }
 
-  function submitEditedForm() {
+  function submitEditedForm(formData) {
+    props.editCar(formData)
     setEditing(false);
   }
 
   return isEditing ? (
-    <CarForm onSubmit={submitEditedForm} buttonLabel='Edit car' />
+    <CarForm submitEditedForm={submitEditedForm} buttonLabel='Edit car' car={selectedCar} />
   ) : (
     <section>
       <h2>{selectedCar.name}</h2>
