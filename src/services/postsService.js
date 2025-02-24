@@ -61,7 +61,10 @@ const index = async () => {
 async function deleteCar(id){
     try {
         const response = await fetch(BASE_URL + `/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: { 
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
         })
         
         const data = await response.json()
@@ -72,10 +75,17 @@ async function deleteCar(id){
 }
 
 
-async function editCar(id){
+async function edit(car){
+    console.log(car)
     try {
-        const response = await fetch(BASE_URL + `/${id}`, {
-            method: 'PUT'
+        const response = await fetch(`${BASE_URL}/${car._id}`, {
+            method: 'PUT',
+            headers: { 
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                "Content-Type" : "application/json" 
+            },
+            body: JSON.stringify(car)
+
         })
 
         const data = await response.json()
@@ -87,4 +97,4 @@ async function editCar(id){
 
 
 
-export { create, index, deleteCar, editCar }
+export { create, index, deleteCar, edit }

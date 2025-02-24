@@ -13,7 +13,7 @@ const initialState = {
 
 export default function CarForm(props) {
 
-    const [formData, setFormData] = useState(initialState)
+    const [formData, setFormData] = useState(props.car ? props.car : initialState)
 
     const navigate = useNavigate()
 
@@ -27,7 +27,7 @@ export default function CarForm(props) {
 
     function handleSubmit(e){
         e.preventDefault()
-        props.onSubmit(formData)
+        props.car ? props.submitEditedForm(formData) : props.createCar(formData)
         setFormData(initialState)
 
         

@@ -85,6 +85,17 @@ function App() {
     }
   }
 
+  async function editCar(car) {
+    try {
+        const response = await postService.edit(car)
+        const updatedCarsArray = cars.map(c => c._id === response._id ? response : c)
+        setCars(updatedCarsArray)
+        console.log(response)
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
 
 
   return (
@@ -94,8 +105,8 @@ function App() {
         <Route path='/' element={user ? <Dashboard cars={cars}/> : <Landing /> } />
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/sign-in' element={<SignInForm />} />
-        <Route path='/cars/:carId' element={<CarPost deleteCar={deleteCar} cars={cars}/>} />
-        <Route path='/cars/new' element={<CarForm onSubmit={createCar} buttonLabel='Create car' />} />
+        <Route path='/cars/:carId' element={<CarPost deleteCar={deleteCar} cars={cars} editCar={editCar} />} />
+        <Route path='/cars/new' element={<CarForm createCar={createCar} buttonLabel='Create car' />} />
         <Route path="*" element={<h1>Nothing Here!</h1>} />
       </Routes>
     </div>
