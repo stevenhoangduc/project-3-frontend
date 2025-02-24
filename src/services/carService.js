@@ -68,4 +68,24 @@ async function deleteCar(carId){
     }
 }
 
+<<<<<<< HEAD:src/services/carService.js
 export { create, index, deleteCar }
+=======
+
+async function editCar(id){
+    try {
+        const response = await fetch(BASE_URL + `/${id}`, {
+            method: 'PUT'
+        })
+
+        const data = await response.json()
+        return data
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+
+
+export { create, index, deleteCar, editCar }
+>>>>>>> main:src/services/postsService.js

@@ -1,42 +1,55 @@
-import { useNavigate, useParams } from "react-router"
-import { Navigate } from "react-router"
-import './CarPost.css';
+import { useNavigate, useParams } from "react-router";
+import "./CarPost.css";
+import CarForm from "../CarForm/CarForm";
+import { useState } from "react";
 
+export default function CarDetail(props) {
+  const { carId } = useParams();
+  const navigate = useNavigate();
+  const [isEditing, setEditing] = useState(false);
 
+  const selectedCar = props.cars.find((car) => {
+    return car._id === carId;
+  });
 
-export default function CarDetail(props){
+  function handleDelete() {
+    props.deleteCar(selectedCar._id);
+    navigate("/");
+  }
 
-    
-    const { carId } = useParams()
-    const navigate = useNavigate()
+  function handleEdit() {
+    // props.editCar(selectedCar._id);
+    setEditing(true);
+  }
 
-    const selectedCar = props.cars.find((car) => {
-        return car._id === carId
-    })  
+  function submitEditedForm() {
+    setEditing(false);
+  }
 
-    function handleDelete(){
-        props.deleteCar(selectedCar._id)
-        navigate('/')
-      
+  return isEditing ? (
+    <CarForm onSubmit={submitEditedForm} buttonLabel='Edit car' />
+  ) : (
+    <section>
+      <h2>{selectedCar.name}</h2>
 
-    return (
-        <section>
-            <h2>{selectedCar.name}</h2>
+      <span>Brand: {selectedCar.brand}</span>
 
+<<<<<<< HEAD
             <span>Make: {selectedCar.make}</span>
+=======
+      <br />
+>>>>>>> main
 
-            <br />
+      <span>Model: {selectedCar.model}</span>
 
-            <span>Model: {selectedCar.model}</span>
+      <br />
 
-            <br />
+      <span>Year: {selectedCar.year}</span>
 
-            <span>Year: {selectedCar.year}</span>
-
-            <br />
-
-            <button onClick={handleDelete}>Delete</button>
-            <br />
-        </section>
-    )
-}}
+      <br />
+      <button onClick={handleEdit}>Edit Car</button>
+      <button onClick={handleDelete}>Delete</button>
+      <br />
+    </section>
+  );
+}
