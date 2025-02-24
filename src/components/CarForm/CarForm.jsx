@@ -27,10 +27,10 @@ export default function CarForm(props) {
 
     function handleSubmit(e){
         e.preventDefault()
-        props.createCar(formData)
+        props.onSubmit(formData)
         setFormData(initialState)
 
-        navigate('/')
+        
     }
 
     return (
@@ -43,7 +43,7 @@ export default function CarForm(props) {
 
             <label htmlFor="model">Model:</label>
             <input type="text" name='model' id='model' value={formData.model} onChange={handleChange} />
-            <button type='submit'>Create Car</button>
+            <button type='submit'>{props.buttonLabel}</button>
         </form>
     )
 }

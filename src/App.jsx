@@ -1,7 +1,7 @@
 // src/App.jsx
 import { useState, useEffect } from 'react'
 import { useContext } from 'react';
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useNavigate } from 'react-router'
 import NavBar from './components/NavBar/NavBar';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
@@ -16,6 +16,7 @@ import { UserContext } from './contexts/UserContext';
 
 function App() {
   const [cars, setCars] = useState([])
+  const navigate = useNavigate()
   
 
   const { user } = useContext(UserContext)
@@ -56,6 +57,7 @@ function App() {
       const newCar = await postService.create(dataFromTheForm)
       console.log(newCar, ' <- this is our newCar')
       setCars([...cars, newCar])
+      navigate('/')
     } catch (err) {
       console.log(err)
     }
@@ -93,7 +95,7 @@ function App() {
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/sign-in' element={<SignInForm />} />
         <Route path='/cars/:carId' element={<CarPost deleteCar={deleteCar} cars={cars}/>} />
-        <Route path='/cars/new' element={<CarForm createCar={createCar} />} />
+        <Route path='/cars/new' element={<CarForm onSubmit={createCar} buttonLabel='Create car' />} />
         <Route path="*" element={<h1>Nothing Here!</h1>} />
       </Routes>
     </div>
