@@ -11,6 +11,7 @@ import CarForm from './components/CarForm/CarForm';
 import CarList from './components/CarList/CarList';
 import CarDetails from './components/CarDetails/CarDetails';
 import * as carService from './services/carService'
+import CarComments from './components/CarComments/CarComments'; //2/25/25
 
 import { UserContext } from './contexts/UserContext';
 
@@ -48,6 +49,47 @@ function App() {
   // when the components loads onto the dom
 
   // use case: We want all of the cars when the page loads
+
+  async function handleLike(props) {
+    try {
+      await carService.likeCar(carId);
+      setSelectedCar((prevCar) => ({ ...prevCar, likes: prevCar.likes + 1 }));
+    } catch (err) {
+      console.error("Error liking post:", err);
+    }
+  }
+
+   async function handleAddComment(carId, formData) {
+     console.log(formData)
+      try {
+        const newComment = await carService.addComment(carId, formData);
+        const updatedCarsArray = cars.map(c => c._id == newComment._id ? newComment : c)
+        setCars(updatedCarsArray)
+      } catch (err) {
+        console.error("Error adding comment:", err);
+      }
+    }
+  
+    async function handleDeleteComment(carId, commentId) {
+      try {
+        const car=await carService.deleteComment(carId, commentId);
+        console.log(car)
+        const filteredCarsArray = cars.filter((c) => {
+          return c._id !== carId
+        })
+        
+        setCars(filteredCarsArray)
+        
+       
+      } catch (err) {
+        console.error("Error deleting comment:", err);
+      }
+    }
+
+  function handleDelete() {
+    props.deleteCar(selectedCar._id);
+    navigate("/");
+  }
 
   async function createCar(dataFromTheForm) {
     // lift the dataFromTheForm
@@ -102,10 +144,15 @@ function App() {
     <div className='App'>
       <NavBar />
       <Routes>
+        {/* 2/25/25 ONLY THE 2 LINES BELOW THIS*/}
+        <Route path="/users/:userId/cars/:carId" element={<CarDetails cars={cars} />} /> 
+        
+
+
         <Route path='/' element={user ? <Dashboard cars={cars}/> : <Landing /> } />
         <Route path='/sign-up' element={<SignUpForm />} />
-        <Route path='/sign-in' element={<SignInForm />} />
-        <Route path='/cars/:carId' element={<CarDetails deleteCar={deleteCar} cars={cars} editCar={editCar} />} />
+        <Route path='/sign-in' element={<SignInForm />}/>
+        <Route path='/cars/:carId' element={<CarDetails deleteCar={deleteCar} cars={cars} editCar={editCar} handleLike={handleLike} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} /> } />
         <Route path='/cars/new' element={<CarForm createCar={createCar} buttonLabel='Create car' />} />
         <Route path="*" element={<h1>Nothing Here!</h1>} />
       </Routes>

@@ -33,7 +33,7 @@ const Dashboard = (props) => {
       <p>
         Car Inventory
         <li>
-          <Link to="/cars/new">Dream Car</Link>
+          <Link to="/cars/new">Create Car</Link>
         </li>
       </p>
     </main>
