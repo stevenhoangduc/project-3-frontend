@@ -46,7 +46,7 @@ export default function CarDetail(props) {
 
       <br />
 
-      <img src={selectedCar.imageUrl}></img>
+      <img src={selectedCar.image}></img>
 
       <br />
       <button onClick={handleEdit}>Edit Car</button>

@@ -9,7 +9,7 @@ const initialState = {
     brand: '',
     year: 0,
     model: '',
-    imageUrl: ''
+    image: ''
 }
 
 export default function CarForm(props) {
@@ -41,8 +41,8 @@ export default function CarForm(props) {
             <label htmlFor="brand">Make:</label>
             <input type="text" name='brand' id='brand' value={formData.brand} onChange={handleChange} />
 
-            <label htmlFor="imageUrl">Image:</label>
-            <input type="text" name='imageUrl' id='imageUrl' value={formData.imageUrl} onChange={handleChange} />
+            <label htmlFor="image">Image:</label>
+            <input type="text" name='image' id='image' value={formData.image} onChange={handleChange} />
 
             <label htmlFor="model">Model:</label>
             <input type="text" name='model' id='model' value={formData.model} onChange={handleChange} />

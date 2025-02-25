@@ -1,11 +1,11 @@
 
 
-const BASE_URL =  `${import.meta.env.VITE_BACK_END_SERVER_URL}/posts`
+const BASE_URL =  `${import.meta.env.VITE_BACK_END_SERVER_URL}/cars`
 
 
 
 async function create(formData){
-    console.log(formData)
+   
 
     try {
         const response = await fetch(BASE_URL, {

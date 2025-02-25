@@ -10,7 +10,7 @@ import Landing from './components/Landing/Landing';
 import CarForm from './components/CarForm/CarForm';
 import CarList from './components/CarList/CarList';
 import CarDetails from './components/CarDetails/CarDetails';
-import * as postService from './services/postsService'
+import * as carService from './services/carService'
 
 import { UserContext } from './contexts/UserContext';
 
@@ -30,7 +30,7 @@ function App() {
     async function fetchCars() {
       try {
 
-        const data = await postService.index()
+        const data = await carService.index()
         // check your work before you do anything else!
         console.log(data, ' <- data')
         // every time you update state, go to your 
@@ -54,7 +54,7 @@ function App() {
     // pass this function to the form component
     // and call it when the user submits the form
     try {
-      const newCar = await postService.create(dataFromTheForm)
+      const newCar = await carService.create(dataFromTheForm)
       console.log(newCar, ' <- this is our newCar')
       setCars([...cars, newCar])
       navigate('/')
@@ -65,7 +65,7 @@ function App() {
 
   async function deleteCar(carIdFromCarDetails) {
     try {
-      const response = await postService.deleteCar(carIdFromCarDetails)
+      const response = await carService.deleteCar(carIdFromCarDetails)
 
       // one way to handle an error from the response
       if (response.err) {
@@ -87,7 +87,7 @@ function App() {
 
   async function editCar(car) {
     try {
-        const response = await postService.edit(car)
+        const response = await carService.edit(car)
         const updatedCarsArray = cars.map(c => c._id === response._id ? response : c)
         setCars(updatedCarsArray)
         console.log(response)
