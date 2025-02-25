@@ -31,9 +31,9 @@ const Dashboard = (props) => {
       <h1>Welcome, {user.username}</h1>
       {carLis}
       <p>
-        This is the dashboard page where you can see a list of all the cars.
+        Car Inventory
         <li>
-          <Link to="/cars/new">Create Car</Link>
+          <Link to="/cars/new">Search Car</Link>
         </li>
       </p>
     </main>
