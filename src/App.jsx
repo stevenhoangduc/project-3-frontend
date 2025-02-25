@@ -9,7 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Landing from './components/Landing/Landing';
 import CarForm from './components/CarForm/CarForm';
 import CarList from './components/CarList/CarList';
-import CarPost from './components/CarPost/CarPost';
+import CarDetails from './components/CarDetails/CarDetails';
 import * as postService from './services/postsService'
 
 import { UserContext } from './contexts/UserContext';
@@ -105,7 +105,7 @@ function App() {
         <Route path='/' element={user ? <Dashboard cars={cars}/> : <Landing /> } />
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/sign-in' element={<SignInForm />} />
-        <Route path='/cars/:carId' element={<CarPost deleteCar={deleteCar} cars={cars} editCar={editCar} />} />
+        <Route path='/cars/:carId' element={<CarDetails deleteCar={deleteCar} cars={cars} editCar={editCar} />} />
         <Route path='/cars/new' element={<CarForm createCar={createCar} buttonLabel='Create car' />} />
         <Route path="*" element={<h1>Nothing Here!</h1>} />
       </Routes>

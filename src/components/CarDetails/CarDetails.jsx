@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router";
-import "./CarPost.css";
+import "./CarDetails.css";
 import CarForm from "../CarForm/CarForm";
 import { useState } from "react";
 
@@ -9,6 +9,7 @@ export default function CarDetail(props) {
   const [isEditing, setEditing] = useState(false);
 
   const selectedCar = props.cars.find((car) => {
+    console.log(car)
     return car._id === carId;
   });
 
@@ -42,6 +43,10 @@ export default function CarDetail(props) {
       <br />
 
       <span>Year: {selectedCar.year}</span>
+
+      <br />
+
+      <img src={selectedCar.imageUrl}></img>
 
       <br />
       <button onClick={handleEdit}>Edit Car</button>

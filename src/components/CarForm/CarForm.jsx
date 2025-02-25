@@ -8,7 +8,8 @@ import { useNavigate } from 'react-router'
 const initialState = {
     brand: '',
     year: 0,
-    model: ''
+    model: '',
+    imageUrl: ''
 }
 
 export default function CarForm(props) {
@@ -18,6 +19,7 @@ export default function CarForm(props) {
     const navigate = useNavigate()
 
     function handleChange(e) {
+        console.log(e.target.value)
 
         setFormData({
             ...formData,
@@ -27,6 +29,7 @@ export default function CarForm(props) {
 
     function handleSubmit(e){
         e.preventDefault()
+        console.log(formData)
         props.car ? props.submitEditedForm(formData) : props.createCar(formData)
         setFormData(initialState)
 
@@ -37,6 +40,9 @@ export default function CarForm(props) {
         <form className='car-form' onSubmit={handleSubmit}>
             <label htmlFor="brand">Make:</label>
             <input type="text" name='brand' id='brand' value={formData.brand} onChange={handleChange} />
+
+            <label htmlFor="imageUrl">Image:</label>
+            <input type="text" name='imageUrl' id='imageUrl' value={formData.imageUrl} onChange={handleChange} />
 
             <label htmlFor="model">Model:</label>
             <input type="text" name='model' id='model' value={formData.model} onChange={handleChange} />
