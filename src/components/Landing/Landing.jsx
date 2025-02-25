@@ -5,8 +5,8 @@ import './Landing.css';
 const Landing = () => {
     return (
       <main>
-        <h1>Hello, you are on the landing page for visitors.</h1>
-        <p>Sign up now, or sign in to see your super secret dashboard!</p>
+        <h1>A social media hub tailored for car enthusiasts!</h1>
+        <p>Sign up now, or sign in to see your dream cars!</p>
       </main>
     );
   };

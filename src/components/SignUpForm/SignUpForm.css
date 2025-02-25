@@ -95,8 +95,8 @@ button:disabled {
 /* Sign Up button */
 .sign-up-btn {
     background: red;
-   
     box-shadow: 4px 6px 8px;
+   
 }
 
 .sign-up-btn:hover {

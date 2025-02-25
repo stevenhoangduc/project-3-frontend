@@ -38,11 +38,12 @@ export default function CarForm(props) {
 
     return (
         <form className='car-form' onSubmit={handleSubmit}>
-            <label htmlFor="brand">Make:</label>
-            <input type="text" name='brand' id='brand' value={formData.brand} onChange={handleChange} />
 
             <label htmlFor="image">Image:</label>
             <input type="text" name='image' id='image' value={formData.image} onChange={handleChange} />
+
+            <label htmlFor="brand">Make:</label>
+            <input type="text" name='brand' id='brand' value={formData.brand} onChange={handleChange} />
 
             <label htmlFor="model">Model:</label>
             <input type="text" name='model' id='model' value={formData.model} onChange={handleChange} />
