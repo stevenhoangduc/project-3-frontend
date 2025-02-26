@@ -80,7 +80,7 @@ export default function CarDetail(props) {
       <button onClick={() => {
         props.handleLike(selectedCar)
         setIsLiked(!isLiked)
-      }}>{isLiked ? "unLike": "like"}</button>
+      }}>{isLiked ? "unLike": "Like"}</button>
       {/* likes button clicks */}
 
       <br />

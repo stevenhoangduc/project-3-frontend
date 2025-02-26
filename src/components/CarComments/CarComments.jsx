@@ -17,7 +17,8 @@ const CarComments = ({car, handleLike, handleAddComment, handleDeleteComment}) =
 function handleSubmit(e) {
     e.preventDefault()
     handleAddComment(car._id, comment)
-}
+    setComment("")
+} 
   return (
     <div>
       
