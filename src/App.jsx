@@ -8,9 +8,10 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import Landing from './components/Landing/Landing';
 import CarForm from './components/CarForm/CarForm';
-import CarList from './components/CarList/CarList';
-import CarPost from './components/CarPost/CarPost';
-import * as postService from './services/postsService'
+
+import CarDetails from './components/CarDetails/CarDetails';
+import * as carService from './services/carService'
+
 
 import { UserContext } from './contexts/UserContext';
 
@@ -30,7 +31,7 @@ function App() {
     async function fetchCars() {
       try {
 
-        const data = await postService.index()
+        const data = await carService.index()
         // check your work before you do anything else!
         console.log(data, ' <- data')
         // every time you update state, go to your 
@@ -49,12 +50,50 @@ function App() {
 
   // use case: We want all of the cars when the page loads
 
+  // async function handleLike(props) {
+  //   try {
+  //     await carService.likeCar(carId);
+  //     setSelectedCar((prevCar) => ({ ...prevCar, likes: prevCar.likes + 1 }));
+  //   } catch (err) {
+  //     console.error("Error liking post:", err);
+  //   }
+  // }
+
+   async function handleAddComment(carId, formData) {
+     console.log(formData)
+      try {
+        const newComment = await carService.addComment(carId, formData);
+        const updatedCarsArray = cars.map(c => c._id == newComment._id ? newComment : c)
+        setCars(updatedCarsArray)
+      } catch (err) {
+        console.error("Error adding comment:", err);
+      }
+    }
+  
+    async function handleDeleteComment(carId, commentId) {
+      try {
+        const car=await carService.deleteComment(carId, commentId);
+        console.log(car)
+        const filteredCarsArray = cars.filter((c) => {
+          return c._id !== carId
+        })
+        
+        setCars(filteredCarsArray)
+        
+       
+      } catch (err) {
+        console.error("Error deleting comment:", err);
+      }
+    }
+
+ 
+
   async function createCar(dataFromTheForm) {
     // lift the dataFromTheForm
     // pass this function to the form component
     // and call it when the user submits the form
     try {
-      const newCar = await postService.create(dataFromTheForm)
+      const newCar = await carService.create(dataFromTheForm)
       console.log(newCar, ' <- this is our newCar')
       setCars([...cars, newCar])
       navigate('/')
@@ -65,7 +104,7 @@ function App() {
 
   async function deleteCar(carIdFromCarDetails) {
     try {
-      const response = await postService.deleteCar(carIdFromCarDetails)
+      const response = await carService.deleteCar(carIdFromCarDetails)
 
       // one way to handle an error from the response
       if (response.err) {
@@ -87,7 +126,7 @@ function App() {
 
   async function editCar(car) {
     try {
-        const response = await postService.edit(car)
+        const response = await carService.edit(car)
         const updatedCarsArray = cars.map(c => c._id === response._id ? response : c)
         setCars(updatedCarsArray)
         console.log(response)
@@ -102,10 +141,14 @@ function App() {
     <div className='App'>
       <NavBar />
       <Routes>
+       
+        
+
+
         <Route path='/' element={user ? <Dashboard cars={cars}/> : <Landing /> } />
         <Route path='/sign-up' element={<SignUpForm />} />
-        <Route path='/sign-in' element={<SignInForm />} />
-        <Route path='/cars/:carId' element={<CarPost deleteCar={deleteCar} cars={cars} editCar={editCar} />} />
+        <Route path='/sign-in' element={<SignInForm />}/>
+        <Route path='/cars/:carId' element={<CarDetails deleteCar={deleteCar} cars={cars} editCar={editCar} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} /> } />
         <Route path='/cars/new' element={<CarForm createCar={createCar} buttonLabel='Create car' />} />
         <Route path="*" element={<h1>Nothing Here!</h1>} />
       </Routes>
