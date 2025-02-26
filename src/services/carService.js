@@ -124,26 +124,6 @@ async function edit(car){
         console.log(err)
     }
 }
-
-// all below are added today 2/25/25
-/**
- * Like a car (increment likes)
- */
-async function likeCar(carId) {
-    try {
-        const response = await fetch(`${BASE_URL}/${carId}/likes`, {
-            method: 'PUT',
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
-        });
-
-        return await response.json();
-    } catch (err) {
-        console.log(err);
-    }
-}
-
 /**
  * Add a comment to a car
  */
@@ -187,4 +167,4 @@ async function deleteComment(carId, commentId) {
 
 
 
-export { create, index, deleteCar, edit, likeCar, addComment, deleteComment, getCar }
+export { create, index, deleteCar, edit, addComment, deleteComment, getCar }
