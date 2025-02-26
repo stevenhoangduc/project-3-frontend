@@ -3,7 +3,8 @@ import { useState } from 'react'
 import './CarForm.css'
 
 
-import { useNavigate } from 'react-router'
+
+
 
 const initialState = {
     brand: '',
@@ -16,7 +17,7 @@ export default function CarForm(props) {
 
     const [formData, setFormData] = useState(props.car ? props.car : initialState)
 
-    const navigate = useNavigate()
+   
 
     function handleChange(e) {
         console.log(e.target.value)

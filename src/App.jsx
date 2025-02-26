@@ -8,10 +8,10 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import Landing from './components/Landing/Landing';
 import CarForm from './components/CarForm/CarForm';
-import CarList from './components/CarList/CarList';
+
 import CarDetails from './components/CarDetails/CarDetails';
 import * as carService from './services/carService'
-import CarComments from './components/CarComments/CarComments'; //2/25/25
+
 
 import { UserContext } from './contexts/UserContext';
 
@@ -50,14 +50,14 @@ function App() {
 
   // use case: We want all of the cars when the page loads
 
-  async function handleLike(props) {
-    try {
-      await carService.likeCar(carId);
-      setSelectedCar((prevCar) => ({ ...prevCar, likes: prevCar.likes + 1 }));
-    } catch (err) {
-      console.error("Error liking post:", err);
-    }
-  }
+  // async function handleLike(props) {
+  //   try {
+  //     await carService.likeCar(carId);
+  //     setSelectedCar((prevCar) => ({ ...prevCar, likes: prevCar.likes + 1 }));
+  //   } catch (err) {
+  //     console.error("Error liking post:", err);
+  //   }
+  // }
 
    async function handleAddComment(carId, formData) {
      console.log(formData)
@@ -86,10 +86,7 @@ function App() {
       }
     }
 
-  function handleDelete() {
-    props.deleteCar(selectedCar._id);
-    navigate("/");
-  }
+ 
 
   async function createCar(dataFromTheForm) {
     // lift the dataFromTheForm
@@ -151,7 +148,7 @@ function App() {
         <Route path='/' element={user ? <Dashboard cars={cars}/> : <Landing /> } />
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/sign-in' element={<SignInForm />}/>
-        <Route path='/cars/:carId' element={<CarDetails deleteCar={deleteCar} cars={cars} editCar={editCar} handleLike={handleLike} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} /> } />
+        <Route path='/cars/:carId' element={<CarDetails deleteCar={deleteCar} cars={cars} editCar={editCar} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} /> } />
         <Route path='/cars/new' element={<CarForm createCar={createCar} buttonLabel='Create car' />} />
         <Route path="*" element={<h1>Nothing Here!</h1>} />
       </Routes>
