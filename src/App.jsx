@@ -144,8 +144,7 @@ function App() {
     <div className='App'>
       <NavBar />
       <Routes>
-        {/* 2/25/25 ONLY THE 2 LINES BELOW THIS*/}
-        <Route path="/users/:userId/cars/:carId" element={<CarDetails cars={cars} />} /> 
+       
         
 
 
