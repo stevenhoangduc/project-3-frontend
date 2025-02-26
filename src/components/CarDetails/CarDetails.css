@@ -1,43 +1,88 @@
+/* Center the entire section */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers items horizontally */
+    text-align: center; /* Ensures text inside is centered */
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f9f9f9; /* Light background for a modern look */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
 
+/* Style the car name */
+h2 {
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
-
-
-/* Car Info Styling */
+/* Style the car details */
 span {
     font-size: 18px;
-    color: #333;
+    color: #555;
     margin-bottom: 5px;
     display: block;
 }
-span {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 5px;
-    display: block;
-}
-span {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 5px;
-    display: block;
+
+/* Style the car image */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Delete Button */
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Evenly spaces buttons */
+    gap: 10px; /* Adjusts the spacing between buttons */
+    width: 15%; /* Ensures buttons take full width */
+    max-width: 20px; /* Restricting max width for better alignment */
+    margin-top: 15px;
+}
+
+
+/* Buttons Container */
 button {
-    width: 25%;
-    padding: 10px;
+   
+    width: 15%;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    background: rgb(203, 32, 52);
+    background: #ff4d4d;
     color: white;
     font-weight: bold;
-    transition: background 0.3s;
-    margin-top: 15px;
-    
+    transition: all 0.3s ease-in-out;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background: rgb(170, 20, 40);
+    background: #e63e3e;
+    transform: scale(1.05);
+}
+
+/* Like Button */
+.like-button {
+    background: #008CBA;
+}
+
+.like-button:hover {
+    background: #0077a7;
+}
+
+/* Like Icon */
+.heart {
+    font-size: 24px;
+    color: red;
 }
