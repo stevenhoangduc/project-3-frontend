@@ -55,12 +55,10 @@ function App() {
     
     
     try {
-      await carService.edit(car);
-      setCars((prevCars) =>
-        prevCars.map((carObject) =>
-          carObject._id === car._id ? { ...car, likes: (car.likes || 0) + 1 } : car
-        )
-      );
+      const carLike=await carService.edit(car);
+        console.log(car)
+        const updatedCarsArray = cars.map(c => c._id == car._id ? car : c)
+        setCars(updatedCarsArray)
     } catch (err) {
       console.error("Error liking post:", err);
     }
@@ -81,11 +79,8 @@ function App() {
       try {
         const car=await carService.deleteComment(carId, commentId);
         console.log(car)
-        const filteredCarsArray = cars.filter((c) => {
-          return c._id !== carId
-        })
-        
-        setCars(filteredCarsArray)
+        const updatedCarsArray = cars.map(c => c._id == car._id ? car : c)
+        setCars(updatedCarsArray)
         
       } catch (err) {
         console.error("Error deleting comment:", err);

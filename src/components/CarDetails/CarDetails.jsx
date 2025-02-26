@@ -73,20 +73,23 @@ export default function CarDetail(props) {
 
       <br />
 
-      <span>{isLiked ?  "👍" : ""}</span>
+      <span>{isLiked ?  "❤️" : ""}</span>
 
-      <br />
-      <button onClick={handleEdit}>Edit Car</button>
-      <button onClick={handleDelete}>Delete</button>
       <br />
 
       <button onClick={() => {
         props.handleLike(selectedCar)
         setIsLiked(!isLiked)
-      }}>{isLiked ? "unLike": "like"}</button>
+      }}>{isLiked ? "unLike": "Like"}</button>
       {/* likes button clicks */}
 
       <br />
+
+      <button onClick={handleEdit}>Edit Car</button>
+      <button onClick={handleDelete}>Delete</button>
+      <br />
+
+     
 
       <CarComments car={selectedCar}  handleAddComment={props.handleAddComment} handleDeleteComment={props.handleDeleteComment}/>
       
@@ -94,6 +97,9 @@ export default function CarDetail(props) {
     </section>
   );
 }
+
+
+
 
 
 

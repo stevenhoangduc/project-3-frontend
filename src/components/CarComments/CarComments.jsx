@@ -5,6 +5,8 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import * as carService from "../../services/carService";
+import "./CarComments.css";
+
 
 const CarComments = ({car, handleLike, handleAddComment, handleDeleteComment}) => {
     
@@ -15,7 +17,8 @@ const CarComments = ({car, handleLike, handleAddComment, handleDeleteComment}) =
 function handleSubmit(e) {
     e.preventDefault()
     handleAddComment(car._id, comment)
-}
+    setComment("")
+} 
   return (
     <div>
       
@@ -26,7 +29,7 @@ function handleSubmit(e) {
             type="text"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            placeholder="Add a comment"
+            placeholder="comment"
             required
           />
           <button type="submit">Add Comment</button>
